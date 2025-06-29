@@ -16,27 +16,33 @@ public class Test {
             System.out.println("3. Display All");
             System.out.println("4. Exit");
             System.out.print("Choose an option: ");
-            int choice = Integer.parseInt(sc.nextLine());
+            try {
+                int choice = Integer.parseInt(sc.nextLine());
 
-            switch (choice) {
-                case 1:
-                    Song song = new Song();
-                    song.createSong();
-                    manager.addMultimedia(song);
-                    break;
-                case 2:
-                    Video video = new Video();
-                    video.createVideo();
-                    manager.addMultimedia(video);
-                    break;
-                case 3:
-                    manager.displayMultimedia();
-                    break;
-                case 4:
-                    System.out.println("Exiting...");
-                    return;
-                default:
-                    System.out.println("Invalid choice. Try again.");
+                switch (choice) {
+                    case 1:
+                        Song song = new Song();
+                        song.createSong();
+                        manager.addMultimedia(song);
+                        break;
+                    case 2:
+                        Video video = new Video();
+                        video.createVideo();
+                        manager.addMultimedia(video);
+                        break;
+                    case 3:
+                        manager.displayMultimedia();
+                        break;
+                    case 4:
+                        System.out.println("Exiting...");
+                        return;
+                    default:
+                        System.out.println("Invalid choice. Try again.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number.");
+            } catch (Exception e) {
+                System.out.println("An unexpected error occurred: " + e.getMessage());
             }
         }
     }
