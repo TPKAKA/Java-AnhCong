@@ -33,8 +33,20 @@ public abstract class Multimedia {
         java.util.Scanner sc = new java.util.Scanner(System.in);
         System.out.print("Enter name: ");
         this.name = sc.nextLine();
-        System.out.print("Enter duration (minutes): ");
-        this.duration = Double.parseDouble(sc.nextLine());
+        while (true) {
+            try {
+                System.out.print("Enter duration (minutes): ");
+                this.duration = Double.parseDouble(sc.nextLine());
+                if (this.duration <= 0) {
+                    System.out.println("Duration must be positive. Try again.");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number format. Please enter a valid double.");
+            }
+        }
+
     }
 
     @Override
