@@ -1,12 +1,11 @@
 package fa.training.entities;
 
-import java.util.Scanner;
-
 public abstract class Multimedia {
     protected String name;
     protected double duration;
 
     public Multimedia() {
+
     }
 
     public Multimedia(String name, double duration) {
@@ -30,7 +29,8 @@ public abstract class Multimedia {
         this.duration = duration;
     }
 
-    public void createMultimedia(Scanner sc) {
+    public void createMultimedia() {
+        java.util.Scanner sc = new java.util.Scanner(System.in);
         System.out.print("Enter name: ");
         this.name = sc.nextLine();
         System.out.print("Enter duration (minutes): ");
