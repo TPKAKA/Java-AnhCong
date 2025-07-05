@@ -19,34 +19,51 @@ public class Test {
             System.out.println("4. Tìm kiếm theo SĐT");
             System.out.println("5. Xóa khách hàng theo SĐT");
             System.out.println("0. Thoát");
-            System.out.print("Chọn: ");
-            int choice = Integer.parseInt(sc.nextLine());
+
+            int choice = -1;
+            while (true) {
+                System.out.print("Chọn: ");
+                String input = sc.nextLine();
+                try {
+                    choice = Integer.parseInt(input);
+                    if (choice >= 0 && choice <= 5) break;
+                    else System.out.println("Vui lòng nhập số từ 0 đến 5.");
+                } catch (NumberFormatException e) {
+                    System.out.println("Vui lòng nhập số hợp lệ!");
+                }
+            }
 
             switch (choice) {
-                case 1:
+                case 1: {
                     List<Customer> customers = customerService.createCustomer();
                     customerService.save(customers);
                     break;
-                case 2:
+                }
+                case 2: {
                     List<Customer> list = customerService.findAll();
                     System.out.println(customerService.save(list));
                     break;
-                case 3:
+                }
+                case 3: {
                     customerService.display(customerService.findAll());
                     break;
-                case 4:
+                }
+                case 4: {
                     System.out.print("Nhập SĐT cần tìm: ");
                     String phone = sc.nextLine();
                     customerService.display(customerService.search(phone));
                     break;
-                case 5:
+                }
+                case 5: {
                     System.out.print("Nhập SĐT cần xóa: ");
                     String delPhone = sc.nextLine();
-                    if (customerService.remove(delPhone))
+                    if (customerService.remove(delPhone)) {
                         System.out.println("Đã xóa thành công.");
-                    else
+                    } else {
                         System.out.println("Không tìm thấy khách hàng.");
+                    }
                     break;
+                }
                 case 0:
                     System.exit(0);
             }
