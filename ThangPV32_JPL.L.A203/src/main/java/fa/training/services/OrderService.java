@@ -7,9 +7,19 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * Service class for handling order input operations.
+ * Provides methods to input a single order and a list of orders from user input.
+ */
 public class OrderService {
     private final Scanner sc = new Scanner(System.in);
 
+    /**
+     * Prompts the user to enter an order number and order date.
+     * The order number must be exactly 10 digits and the date must follow dd/MM/yyyy format.
+     *
+     * @return a new Order object with validated number and date.
+     */
     public Order inputOrder() {
         String number;
         while (true) {
@@ -31,6 +41,11 @@ public class OrderService {
         return new Order(number, date);
     }
 
+    /**
+     * Continuously prompts the user to enter orders until they choose to stop.
+     *
+     * @return a list of Order objects entered by the user.
+     */
     public List<Order> inputOrderList() {
         List<Order> orders = new ArrayList<>();
         while (true) {
