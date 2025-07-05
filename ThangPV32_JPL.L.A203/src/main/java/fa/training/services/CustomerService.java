@@ -56,7 +56,7 @@ public class CustomerService {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Constants.DATA_FILE))) {
             list = (List<Customer>) ois.readObject();
         } catch (Exception e) {
-
+     
         }
         return list;
     }
@@ -64,7 +64,8 @@ public class CustomerService {
     public void display(List<Customer> customers) {
         System.out.printf("%-20s %-20s %-15s %s\n", "Tên", "Địa chỉ", "SĐT", "Danh sách Orders");
         for (Customer c : customers) {
-            System.out.printf("%-20s %-20s %-15s %s\n", c.getName(), c.getAddress(), c.getPhoneNumber(), c.getOrders());
+            System.out.printf("%-20s %-20s %-15s %s\n",
+                    c.getName(), c.getAddress(), c.getPhoneNumber(), c.getOrders());
         }
     }
 
