@@ -56,7 +56,7 @@ public class CustomerService {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Constants.DATA_FILE))) {
             list = (List<Customer>) ois.readObject();
         } catch (Exception e) {
-            
+
         }
         return list;
     }
